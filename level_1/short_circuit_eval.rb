@@ -10,5 +10,5 @@ end
 
 # Refactored
 def search_index_r(games, search_term)
-	games.find_index(search_term) || "Not found"
+    games.find_index(search_term) || "Not found"
 end
