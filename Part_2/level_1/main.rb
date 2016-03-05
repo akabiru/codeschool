@@ -21,11 +21,18 @@ print_all_details = Proc.new do |game|
 	puts "#{game.name} - (#{game.system}) - #{game.year}"
 end
 
+print_names = Proc.new do |name|
+	puts "- #{name}"
+end
+
 error_handler = lambda { puts "Oops, something went wrong." }
 
 library = Library.new(GAMES)
-library.exec_game("Contra", print_details, error_handler)
-35.times { print "-" }
-puts "\n"
-# Convert block to proc
-library.each(print_all_details)
+# library.exec_game("Contra", print_details, error_handler)
+# 35.times { print "-" }
+# puts "\n"
+# library.each(&print_all_details)
+# puts "\n"
+# library.names(&print_names)
+library.list
+library.list { |game| game.year }

@@ -11,11 +11,21 @@ class Library
 		error_action.call
 	end
 
-	# convert block received to Proc
-	def each(print_all_details)
+	def each(&print_all_details)
+		games.each(&print_all_details)
+	end
+
+	def names
+		games.map(&:name)
+	end
+
+	def list
 		games.each do |game|
-			# yield game
-			print_all_details.call(game)
+			if block_given?
+				puts yield game
+			else
+				puts "- #{game.name}"
+			end
 		end
 	end
 end
